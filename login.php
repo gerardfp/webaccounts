@@ -75,5 +75,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>
 		<input type="submit" value="Acceder">
 	</p>
-	<p class="link">No tiene una cuenta? <a href="signup.php">Regístrese ahora</a>.</p>
+	<p class="link">¿No tiene una cuenta? <a href="signup.php">Regístrese ahora</a>.</p>
 </form>

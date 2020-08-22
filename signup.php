@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <meta charset="UTF-8">
-<title>Sign Up</title>
+<title>Registrarse</title>
 <link rel="stylesheet" href="style.css">
 
 <?php
@@ -64,19 +64,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<div class="logo">&#128100;</div>
 
 	<p>
-        	<label>Username</label>
+        	<label for="username">Usuario</label>
         	<input type="text" name="username" value="<?php echo $username; ?>">
     	</p>
     	<p>
-        	<label>Password</label>
+        	<label for="password">Contraseña</label>
         	<input type="password" name="password" value="<?php echo $password; ?>">
 	</p>
 	<p>
-        	<label>Confirm Password</label>
+        	<label for="confirm_password">Confirme contraseña</label>
         	<input type="password" name="confirm_password" value="<?php echo $confirm_password; ?>">
 	</p>
 	<p>
-	        <input type="submit" value="Sign Up">
+	        <input type="submit" value="Registrarse">
 	</p>
     </div>
     <p class="link">¿Ya tiene una cuenta? <a href="login.php">Acceda</a>.</p>
