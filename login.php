@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     		header("location: welcome.php");
                 	}
 			else {
-                    		$error = "La contraseña introducida no es correcto.";
+                    		$error = "La contraseña introducida no es correcta.";
                 	}
 		}
 		else {
