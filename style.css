@@ -1,0 +1,57 @@
+body {
+	font-family: sans;
+	background-color: #f1f1f1;
+}
+
+form {
+	border: 1px solid gray;
+	padding: 24px;
+	width: 320px;
+	margin: 8% auto;
+	background-color: white;
+}
+
+input {
+	display: block;
+	padding: 16px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+input[type=submit] {
+	background-color: #226699;
+	color: white;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+label {
+	display: inline-block;
+	margin: 8px 0px;
+}
+
+.logo {
+	font-size: 4em;
+	text-align: center;
+}
+
+.link {
+	font-size: 0.8em;
+}
+
+.error {
+	border-left: 4px solid #dc3232;
+	margin: auto;
+	width: 320px;
+	padding: 24px;
+	background-color: white;
+	font-size: 0.8em;
+}
+
+.welcome {
+	background-color: white;
+	padding: 16px;
+	text-align: center;
+}
