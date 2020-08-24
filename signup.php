@@ -1,19 +1,25 @@
 <?php
-$mysqli = new mysqli("localhost", "webaccounts_user", "webaccounts_password", "webaccounts_database");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+	$mysqli = new mysqli("localhost", "webaccounts_user", "webaccounts_password", "webaccounts_database");
+
     	if (empty($_POST["username"])) {
         	$error = "Introduzca un nombre de usuario.";
     	}
 	else {
     		$stmt = $mysqli->prepare("SELECT id FROM users WHERE username = ?");
+
 		$stmt->bind_param("s", $_POST["username"]);
+
 		$stmt->execute();
+
 		$stmt->store_result();
 
         	if ($stmt->num_rows == 1) {
             		$error = "El nombre de usuario no está disponible.";
         	}
+
         	$stmt->close();
     	}
 
@@ -41,9 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$password_hashed = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 		$stmt->execute();
-		header("location: login.php");
 
 		$stmt->close();
+
+		header("location: login.php");
     	}
 }
 ?>
@@ -65,15 +72,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	<p>
         	<label for="username">Usuario</label>
-        	<input type="text" name="username" value="<?php echo $username; ?>">
+        	<input type="text" name="username" value="<?php echo $_POST['username']; ?>">
     	</p>
     	<p>
         	<label for="password">Contraseña</label>
-        	<input type="password" name="password" value="<?php echo $password; ?>">
+        	<input type="password" name="password">
 	</p>
 	<p>
         	<label for="confirm_password">Confirme contraseña</label>
-        	<input type="password" name="confirm_password" value="<?php echo $confirm_password; ?>">
+        	<input type="password" name="confirm_password">
 	</p>
 	<p>
 	        <input type="submit" value="Registrarse">

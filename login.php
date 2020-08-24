@@ -7,9 +7,10 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     	exit;
 }
 
-$mysqli = new mysqli("localhost", "webaccounts_user", "webaccounts_password", "webaccounts_database");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+	$mysqli = new mysqli("localhost", "webaccounts_user", "webaccounts_password", "webaccounts_database");
 
     	if (empty($_POST["username"])) {
         	$error = "Introduzca el nombre de usuario.";
@@ -20,9 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     	if (empty($error)) {
 		$stmt = $mysqli->prepare("SELECT id, username, password FROM users WHERE username = ?");
+
 		$stmt->bind_param("s", $_POST['username']);
 
 		$stmt->execute();
+
 		$stmt->store_result();
 
 		if ($stmt->num_rows == 1) {

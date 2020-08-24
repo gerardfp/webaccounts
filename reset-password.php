@@ -7,9 +7,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 	exit;
 }
 
-$mysqli = new mysqli("localhost", "webaccounts_user", "webaccounts_password", "webaccounts_database");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+	$mysqli = new mysqli("localhost", "webaccounts_user", "webaccounts_password", "webaccounts_database");
 
     	if (empty($_POST["new_password"])) {
         	$error = "Introduzca la nueva contraseña.";
@@ -27,15 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     	if (empty($error)) {
         	$stmt = $mysqli->prepare("UPDATE users SET password = ? WHERE id = ?");
 
-		$stmt->bind_param("si", $password_hashed, $_SESSSION['id']);
+		$stmt->bind_param("si", $password_hashed, $_SESSION['id']);
 
-		$password_hashed = password_hash($new_password, PASSWORD_DEFAULT);
+		$password_hashed = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
 
         	$stmt->execute();
+		$stmt->close();
 
-        	session_destroy();
-        	header("location: login.php");
-        	exit();
+        	//session_destroy();
+        	header("location: welcome.php");
+        	//exit();
     	}
 }
 ?>
@@ -55,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<div class="logo">&#128100;</div>
 	<p>
         	<label for="new_password">Nueva contraseña</label>
-        	<input type="password" name="new_password" value="<?php echo $new_password; ?>">
+        	<input type="password" name="new_password">
 	</p>
 	<p>
         	<label for="confirm_password">Confirme la contraseña</label>
